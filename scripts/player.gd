@@ -1,15 +1,17 @@
-extends Area2D
+extends CharacterBody2D
 
-var original_height = 440.0
-var jump_height = 240.0
-var jump_speed = 5.0
-var jumping = false
+var velocity = Vector2.ZERO
 
-func _process(delta):
-	if Input.is_action_just_pressed("jump"):
-		jumping = true
-	if jumping == true:
-		position.y = lerp(position.y, jump_height, delta * jump_speed)
-		await get_tree().create_timer(0.3).timeout
-		position.y = lerp(position.y, original_height, delta * jump_speed)
-		jumping = false
+var gravity = 1200.0
+var jump_force = -400.0
+
+func _physics_process(delta):
+	# gravity
+	velocity.y += gravity * delta
+
+	# jump
+	if is_on_floor() and Input.is_action_just_pressed("jump"):
+		velocity.y = jump_force
+
+	# Move
+	velocity = move_and_slide()
