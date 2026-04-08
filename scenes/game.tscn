@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://0wq12fns74v4"]
+
+[ext_resource type="Texture2D" uid="uid://jb7n06xbr33w" path="res://assets/player design test.png" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://d4ai8h788vs3p" path="res://scripts/player.gd" id="1_yqjtg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lnu2h"]
+radius = 106.666626
+height = 373.33325
+
+[node name="Game" type="Node2D" unique_id=18802670]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=141074667]
+offset_top = 464.0
+offset_right = 1152.0
+offset_bottom = 640.0
+color = Color(0.39797696, 0.39797696, 0.3979769, 1)
+
+[node name="Player" type="Area2D" parent="." unique_id=186891642]
+position = Vector2(584, 440)
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_yqjtg")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1557504503]
+position = Vector2(10, -3.3333333)
+texture = ExtResource("1_uwrxv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1858742287]
+shape = SubResource("CapsuleShape2D_lnu2h")
