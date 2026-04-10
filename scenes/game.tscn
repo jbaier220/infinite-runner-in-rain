@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://0wq12fns74v4"]
 
+[ext_resource type="Texture2D" uid="uid://bhiluc0aim2f1" path="res://assets/concept scene 1.png" id="1_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://jb7n06xbr33w" path="res://assets/player design test.png" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://cbdhansqpbp3g" path="res://scripts/player2.gd" id="1_yqjtg"]
 
@@ -11,19 +12,19 @@ height = 373.33325
 
 [node name="Game" type="Node2D" unique_id=18802670]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=31611960]
-position = Vector2(0, 464)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1176161134]
+position = Vector2(576, 324)
+texture = ExtResource("1_lnu2h")
 
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=141074667]
-offset_right = 1152.0
-offset_bottom = 176.0
-color = Color(0.39797696, 0.39797696, 0.3979769, 1)
+[node name="Floor" type="StaticBody2D" parent="." unique_id=31611960]
+position = Vector2(0, 568)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=948227995]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=948227995]
+position = Vector2(0, -40)
 shape = SubResource("WorldBoundaryShape2D_yqjtg")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1714230929]
-position = Vector2(560, 272)
+position = Vector2(560, 368)
 scale = Vector2(0.8, 0.8)
 script = ExtResource("1_yqjtg")
 
@@ -32,3 +33,19 @@ texture = ExtResource("1_uwrxv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1858742287]
 shape = SubResource("CapsuleShape2D_lnu2h")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=25457731]
+position = Vector2(744, 0)
+amount = 545
+lifetime = 2.0
+preprocess = 10.0
+emission_shape = 3
+emission_rect_extents = Vector2(750, 1)
+direction = Vector2(-0.5, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 600.0
+initial_velocity_max = 900.0
+scale_amount_min = 3.0
+scale_amount_max = 6.0
+color = Color(0.2945346, 0.531928, 0.7085006, 1)
